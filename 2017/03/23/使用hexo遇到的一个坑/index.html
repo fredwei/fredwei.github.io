@@ -6,17 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://fredwei.com">
-  <title>Archives: 2017 | Fred&#39;s Blog</title>
+  <title>使用hexo遇到的一个坑 | Fred&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="欢迎访问我的博客">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Fred's Blog">
-<meta property="og:url" content="http://fredwei.com/archives/2017/index.html">
+  <meta name="description" content="hexo中首页列表的摘要（excerpt）弄不出来，一直显示全文
+修改了N多配置都不生效，官方文档中也没有说明，唯有各种搜索答案，终于找到了！">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用hexo遇到的一个坑">
+<meta property="og:url" content="http://fredwei.com/2017/03/23/使用hexo遇到的一个坑/index.html">
 <meta property="og:site_name" content="Fred's Blog">
-<meta property="og:description" content="欢迎访问我的博客">
+<meta property="og:description" content="hexo中首页列表的摘要（excerpt）弄不出来，一直显示全文
+修改了N多配置都不生效，官方文档中也没有说明，唯有各种搜索答案，终于找到了！">
+<meta property="og:updated_time" content="2017-03-23T04:15:03.159Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Fred's Blog">
-<meta name="twitter:description" content="欢迎访问我的博客">
+<meta name="twitter:title" content="使用hexo遇到的一个坑">
+<meta name="twitter:description" content="hexo中首页列表的摘要（excerpt）弄不出来，一直显示全文
+修改了N多配置都不生效，官方文档中也没有说明，唯有各种搜索答案，终于找到了！">
   
   
     <link rel="icon" href="/images/avatar.jpg">
@@ -142,89 +146,61 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-使用hexo遇到的一个坑" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/28/使用webpack构建时给window绑定事件的坑/" class="archive-article-date">
-  	<time datetime="2017-03-28T07:45:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-28</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/28/使用webpack构建时给window绑定事件的坑/">使用webpack构建时给window绑定事件的坑</a>
+    <h1 class="article-title" itemprop="name">
+      使用hexo遇到的一个坑
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">webpack</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">jquery</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/填坑/" class="article-tag-list-link color3">填坑</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/23/使用hexo遇到的一个坑/" class="archive-article-date">
+        
+        <a href="/2017/03/23/使用hexo遇到的一个坑/" class="archive-article-date">
   	<time datetime="2017-03-23T03:46:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-23</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/23/使用hexo遇到的一个坑/">使用hexo遇到的一个坑</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>hexo中首页列表的摘要（excerpt）弄不出来，一直显示全文</p>
+<p>修改了N多配置都不生效，官方文档中也没有说明，唯有各种搜索答案，终于找到了！</p>
+<a id="more"></a>
+<p>原来只需要在文中加入<code>&lt;!-- more --&gt;</code>就可以了，这实在是个大坑！</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">这就是一个简介</div><div class="line"></div><div class="line">&lt;!-- more --&gt;</div><div class="line"> </div><div class="line">这里更多的内容</div></pre></td></tr></table></figure>
+<p><a href="http://www.cnblogs.com/pcy0/p/how-to-show-less-in-home-page-of-hexo.html, Clarence Pan的博客" target="_blank" rel="external">原答案链接</a></p>
 
-        <div class="article-info info-on-right">
-          
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>thanks<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -236,7 +212,7 @@
 		</ul>
 	</div>
 
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -249,74 +225,95 @@
 	</div>
 
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://fredwei.com/2017/03/23/使用hexo遇到的一个坑/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/22/express路由/" class="archive-article-date">
-  	<time datetime="2017-03-22T08:11:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/22/express路由/">Express路由</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">nodejs</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">express</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">router</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/分享/" class="article-tag-list-link color3">分享</a>
-        		</li>
-      		
-		</ul>
-	</div>
+  
+<nav id="article-nav">
+  
+    <a href="/2017/03/28/使用webpack构建时给window绑定事件的坑/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          使用webpack构建时给window绑定事件的坑
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/03/22/express路由/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Express路由</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+
+
+
+
   
-  
-    </div></section>
+    <div class="duoshuo"></div>
   
 
-    
+
 
 
           </div>
@@ -339,8 +336,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
