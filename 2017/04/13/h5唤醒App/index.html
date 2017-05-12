@@ -6,17 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://fredwei.com">
-  <title>Category: 填坑 | Fred&#39;s Blog</title>
+  <title>h5唤醒App | Fred&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="欢迎访问我的博客">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Fred's Blog">
-<meta property="og:url" content="http://fredwei.com/categories/填坑/index.html">
+  <meta name="description" content="首先要声明的一点是，h5页面无法获取app的状态，也就是说，无法判断app是否已下载，app是否已打开。那么基于这个，怎么样实现在h5页面唤醒指定的app呢？请看下回分解~">
+<meta property="og:type" content="article">
+<meta property="og:title" content="h5唤醒App">
+<meta property="og:url" content="http://fredwei.com/2017/04/13/h5唤醒App/index.html">
 <meta property="og:site_name" content="Fred's Blog">
-<meta property="og:description" content="欢迎访问我的博客">
+<meta property="og:description" content="首先要声明的一点是，h5页面无法获取app的状态，也就是说，无法判断app是否已下载，app是否已打开。那么基于这个，怎么样实现在h5页面唤醒指定的app呢？请看下回分解~">
+<meta property="og:updated_time" content="2017-04-26T04:45:47.684Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Fred's Blog">
-<meta name="twitter:description" content="欢迎访问我的博客">
+<meta name="twitter:title" content="h5唤醒App">
+<meta name="twitter:description" content="首先要声明的一点是，h5页面无法获取app的状态，也就是说，无法判断app是否已下载，app是否已打开。那么基于这个，怎么样实现在h5页面唤醒指定的app呢？请看下回分解~">
   
   
     <link rel="icon" href="/images/avatar.jpg">
@@ -142,124 +143,166 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-h5唤醒App" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/28/使用webpack构建时给window绑定事件的坑/" class="archive-article-date">
-  	<time datetime="2017-03-28T07:45:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-28</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/28/使用webpack构建时给window绑定事件的坑/">使用webpack构建时给window绑定事件的坑</a>
+    <h1 class="article-title" itemprop="name">
+      h5唤醒App
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">webpack</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">jquery</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/填坑/" class="article-tag-list-link color3">填坑</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/23/使用hexo遇到的一个坑/" class="archive-article-date">
-  	<time datetime="2017-03-23T03:46:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-23</time>
+        
+        <a href="/2017/04/13/h5唤醒App/" class="archive-article-date">
+  	<time datetime="2017-04-13T05:37:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-13</time>
 </a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>首先要声明的一点是，h5页面无法获取app的状态，也就是说，无法判断app是否已下载，app是否已打开。<br>那么基于这个，怎么样实现在h5页面唤醒指定的app呢？<br>请看下回分解~</p>
+<a id="more"></a>
+<p>一般来讲，app产品都会有一个下载落地页，引导用户前往应用市场下载app应用，安卓的前往安卓市场，ios的跑到appstore。<br>那么先不考虑页面的样式，首先进入到页面，第一步是获取设备信息，也就是浏览器信息。</p>
+<h2 id="1、获取设备信息"><a href="#1、获取设备信息" class="headerlink" title="1、获取设备信息"></a>1、获取设备信息</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getPlatform</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="keyword">var</span> u = navigator.userAgent,</div><div class="line">    app = navigator.appVersion,</div><div class="line">    iosVer = app.match(<span class="regexp">/OS (\d+)_(\d+)_?(\d+)?/</span>);</div><div class="line"></div><div class="line">  <span class="keyword">return</span> &#123;</div><div class="line">    <span class="comment">// android终端或者uc浏览器</span></div><div class="line">    android: u.indexOf(<span class="string">'Android'</span>) &gt; <span class="number">-1</span> || u.indexOf(<span class="string">'Linux'</span>) &gt; <span class="number">-1</span>,</div><div class="line">    <span class="comment">// 是否为iPhone或者QQHD浏览器</span></div><div class="line">    iPhone: u.indexOf(<span class="string">'iPhone'</span>) &gt; <span class="number">-1</span>,</div><div class="line">    <span class="comment">// 是否iPad</span></div><div class="line">    iPad: u.indexOf(<span class="string">'iPad'</span>) &gt; <span class="number">-1</span>,</div><div class="line">    <span class="comment">// ios 版本号</span></div><div class="line">    iosVer: iosVer &amp;&amp; <span class="built_in">parseInt</span>(iosVer[<span class="number">1</span>], <span class="number">10</span>),</div><div class="line">    <span class="comment">// 微信</span></div><div class="line">    weChat: u.indexOf(<span class="string">'MicroMessenger'</span>) &gt; <span class="number">-1</span>,</div><div class="line">    <span class="comment">// QQ</span></div><div class="line">    QQ: u.indexOf(<span class="string">'QQ'</span>) &gt; <span class="number">-1</span>,</div><div class="line">    <span class="comment">// 微博</span></div><div class="line">    WeiBo: u.indexOf(<span class="string">'weibo'</span>) &gt; <span class="number">-1</span></div><div class="line">  &#125;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="2、设置app下载地址"><a href="#2、设置app下载地址" class="headerlink" title="2、设置app下载地址"></a>2、设置app下载地址</h2><p>安卓应用市场及appstore下载地址各不相同，所以要跟app的童鞋拿到应用下载地址<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 下载链接</span></div><div class="line"><span class="keyword">var</span> _androidUrl = <span class="string">'http://a.app.qq.com/o/simple.jsp?pkgname=com.ingdan.ingdannews'</span>;</div><div class="line"><span class="keyword">var</span> _iosUrl = <span class="string">'https://itunes.apple.com/us/app/in-tou-tiao-zhuan-zhu-zhi/id1197794545?l=zh&amp;ls=1&amp;mt=8'</span>;</div></pre></td></tr></table></figure></p>
+<h2 id="3、跳转app下载页面"><a href="#3、跳转app下载页面" class="headerlink" title="3、跳转app下载页面"></a>3、跳转app下载页面</h2><p>那么页面打开后，就应该判断设备，然后进行页面跳转了<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> _platform = getPlatform();</div><div class="line"><span class="keyword">var</span> _downloadUrl = _androidUrl;</div><div class="line"></div><div class="line"><span class="keyword">if</span>(_platform.android)&#123;</div><div class="line">  <span class="comment">// 安卓</span></div><div class="line">&#125;<span class="keyword">else</span>&#123;</div><div class="line">  <span class="comment">// ios</span></div><div class="line">  _downloadUrl = _iosUrl;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="built_in">window</span>.location.href = _downloadUrl;</div></pre></td></tr></table></figure></p>
+<p>是不是很完美了，当然不是，app还没打开呢，而且在各个不同环境有不同限制，例如在微信或微博中打开，是不允许直接跳转到appstore，那怎么解决？<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>(_platform.android)&#123;</div><div class="line">  <span class="comment">// 安卓</span></div><div class="line">&#125;<span class="keyword">else</span>&#123;</div><div class="line">  <span class="comment">// ios</span></div><div class="line">  <span class="keyword">if</span>(_platform.weChat || _platform.WeiBo)&#123;</div><div class="line">    alert(<span class="string">'请再浏览器中打开本页面~速去'</span>);</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>看起来十分完美，然而还是没有，app也还没打开呢</p>
+<h2 id="4、打开APP"><a href="#4、打开APP" class="headerlink" title="4、打开APP"></a>4、打开APP</h2><p>如何打开app呢，这里需要注意的一点事，打开app必须要开发的童靴提供一个自定义协议，例如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> _appUrl = <span class="string">'INNewsApp://'</span>;</div></pre></td></tr></table></figure>
+<p>其中<code>INNewsApp://</code>是app开发自行决定的协议，当然最好后边能跟上app相对应的域名，如：<code>INNewsApp://m.ingdan.com</code><br>如果需要打开app后跳转到指定页面，那么就应该在链接中加入参数，如：<code>INNewsApp://m.ingdan.com?id=9527</code></p>
+<p>打来app地址有了，接下来如何处理？<br>我们这里使用iframe来打开，避免了一旦url有误，或者手机上没有安装app导致报错。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 在iframe 中打开APP</span></div><div class="line"><span class="keyword">var</span> ifr = <span class="built_in">document</span>.createElement(<span class="string">'iframe'</span>);</div><div class="line"></div><div class="line">ifr.style.display = <span class="string">'none'</span>;</div><div class="line">ifr.src = _appUrl;</div><div class="line"></div><div class="line"><span class="built_in">document</span>.body.appendChild(ifr);</div></pre></td></tr></table></figure>
+<p>到了这时，在测试ios的时候发现一个问题，ios9以上，不支持iframe打开app<br>于是乎<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 判断ios版本，ios9以上直接打开</span></div><div class="line"><span class="keyword">if</span>(_platform.iosVer &gt;= <span class="number">9</span>)&#123;</div><div class="line">  <span class="built_in">window</span>.location.href = _appUrl;</div><div class="line">&#125;<span class="keyword">else</span>&#123;</div><div class="line">  <span class="comment">// 在iframe 中打开APP</span></div><div class="line">  <span class="comment">// ...</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>如果手机上安装有app，这是h5就可以唤醒app，app就启动了。</p>
+<h2 id="5、一些兼容处理"><a href="#5、一些兼容处理" class="headerlink" title="5、一些兼容处理"></a>5、一些兼容处理</h2><p>产品这时希望，那么如果手机上没有安装app，怎跳转到app下载页面，怎么办？<br>先把产品打一顿再说</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="comment">// 2秒之后，移除iframe</span></div><div class="line">  <span class="built_in">document</span>.body.removeChild(ifr);</div><div class="line"></div><div class="line">  <span class="comment">// 跳转到app下载地址</span></div><div class="line">  <span class="built_in">window</span>.location.href = _downloadUrl;</div><div class="line">&#125;, <span class="number">2000</span>);</div></pre></td></tr></table></figure>
+<p>这样似乎已经完美了，然后还没有。<br>一般情况下，浏览器处于非激活状态、使用alert弹出信息或者系统信息提示，页面是会中断js运行的<br>然后在QQ安卓版的内置浏览器上，并没有，更为让人开心的是，如果你的app是跳转到应用宝上，应用宝会自动判断你是否一下子该app，并且还很友好的帮你打开<br>这个时候你就会发现，在QQ内置浏览器打开下载引导页面，app打开了，正看得高兴，过了2秒，app又打开一次…</p>
+<p>于是乎<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 非QQ内置浏览器</span></div><div class="line"><span class="keyword">if</span>(!_platform.QQ)&#123;</div><div class="line">  <span class="built_in">window</span>.location.href = _downloadUrl;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>那在QQ安卓版的内置浏览器上，如果有app，则自动打开，如果没有，怎么引导用户下载？<br>页面上那么大一颗下载按钮，自己点吧。</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>thanks<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/23/使用hexo遇到的一个坑/">使用hexo遇到的一个坑</a>
-    </h1>
-  
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hexo</a>
-        		</li>
-      		
-		</ul>
-	</div>
+      
 
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/填坑/" class="article-tag-list-link color3">填坑</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://fredwei.com/2017/04/13/h5唤醒App/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2017/04/26/vuejs基础入门/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          vuejs基础入门
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2017/04/12/workers/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">web workers</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+  
+    <div class="duoshuo"></div>
   
 
-    
+
 
 
           </div>
@@ -282,10 +325,10 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
-		isCategory: true,
+		isCategory: false,
 		open_in_new: false,
 		root: "/",
 		innerArchive: true,
