@@ -6,21 +6,27 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://fredwei.com">
-  <title>使用hexo遇到的一个坑 | Fred&#39;s Blog</title>
+  <title>在 github pages 添加自定义域名 | Fred&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="hexo中首页列表的摘要（excerpt）弄不出来，一直显示全文
-修改了N多配置都不生效，官方文档中也没有说明，唯有各种搜索答案，终于找到了！">
+  <meta name="description" content="在github上搭建静态页面博客，会得到一个可在线访问的地址，例如我的博客地址是fredwei.github.io。
+显然这个地址比较难记，不过github允许用户绑定自定义域名。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="使用hexo遇到的一个坑">
-<meta property="og:url" content="http://fredwei.com/2017/03/23/使用hexo遇到的一个坑/index.html">
+<meta property="og:title" content="在 github pages 添加自定义域名">
+<meta property="og:url" content="http://fredwei.com/2017/05/12/添加自定义域名/index.html">
 <meta property="og:site_name" content="Fred's Blog">
-<meta property="og:description" content="hexo中首页列表的摘要（excerpt）弄不出来，一直显示全文
-修改了N多配置都不生效，官方文档中也没有说明，唯有各种搜索答案，终于找到了！">
-<meta property="og:updated_time" content="2017-03-23T04:15:03.159Z">
+<meta property="og:description" content="在github上搭建静态页面博客，会得到一个可在线访问的地址，例如我的博客地址是fredwei.github.io。
+显然这个地址比较难记，不过github允许用户绑定自定义域名。">
+<meta property="og:image" content="http://fredwei.com/images/20170512112604.png">
+<meta property="og:image" content="http://fredwei.com/images/20170512113238.png">
+<meta property="og:image" content="http://fredwei.com/images/20170512113631.png">
+<meta property="og:image" content="http://fredwei.com/images/20170512114045.png">
+<meta property="og:image" content="http://fredwei.com/images/20170512115239.png">
+<meta property="og:updated_time" content="2017-05-12T03:55:03.302Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="使用hexo遇到的一个坑">
-<meta name="twitter:description" content="hexo中首页列表的摘要（excerpt）弄不出来，一直显示全文
-修改了N多配置都不生效，官方文档中也没有说明，唯有各种搜索答案，终于找到了！">
+<meta name="twitter:title" content="在 github pages 添加自定义域名">
+<meta name="twitter:description" content="在github上搭建静态页面博客，会得到一个可在线访问的地址，例如我的博客地址是fredwei.github.io。
+显然这个地址比较难记，不过github允许用户绑定自定义域名。">
+<meta name="twitter:image" content="http://fredwei.com/images/20170512112604.png">
   
   
     <link rel="icon" href="/images/avatar.jpg">
@@ -146,32 +152,45 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-使用hexo遇到的一个坑" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-添加自定义域名" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      使用hexo遇到的一个坑
+      在 github pages 添加自定义域名
     </h1>
   
 
         
-        <a href="/2017/03/23/使用hexo遇到的一个坑/" class="archive-article-date">
-  	<time datetime="2017-03-23T03:46:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-23</time>
+        <a href="/2017/05/12/添加自定义域名/" class="archive-article-date">
+  	<time datetime="2017-05-12T03:16:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-12</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>hexo中首页列表的摘要（excerpt）弄不出来，一直显示全文</p>
-<p>修改了N多配置都不生效，官方文档中也没有说明，唯有各种搜索答案，终于找到了！</p>
+        <p>在github上搭建静态页面博客，会得到一个可在线访问的地址，例如我的博客地址是<code>fredwei.github.io</code>。</p>
+<p>显然这个地址比较难记，不过github允许用户绑定自定义域名。</p>
 <a id="more"></a>
-<p>原来只需要在文中加入<code>&lt;!-- more --&gt;</code>就可以了，这实在是个大坑！</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">这就是一个简介</div><div class="line"></div><div class="line">&lt;!-- more --&gt;</div><div class="line"> </div><div class="line">这里更多的内容</div></pre></td></tr></table></figure>
-<p><a href="http://www.cnblogs.com/pcy0/p/how-to-show-less-in-home-page-of-hexo.html, Clarence Pan的博客" target="_blank" rel="external">原答案链接</a></p>
+<h2 id="一、首先，你的搭建好你的博客"><a href="#一、首先，你的搭建好你的博客" class="headerlink" title="一、首先，你的搭建好你的博客"></a>一、首先，你的搭建好你的博客</h2><p>我使用的是<code>hexo</code>在<code>github</code>上搭建的个人博客，当然你也可以用其他的，但是最终上传到github上的内容基本上是一直的，如下图：</p>
+<p><img src="/images/20170512112604.png" alt=""></p>
+<p>绑定自定义域名的前提是，你已经把博客已经搭建好了。<br>如果还不知道怎么搭建博客，可以参考这里<a href="http://baixin.io/2015/08/HEXO搭建个人博客/, baixin的博客" target="_blank" rel="external">hexo搭建教程</a>或者<a href="https://hexo.io/, hexo.io" target="_blank" rel="external">hexo官网</a></p>
+<h2 id="二、拿到博客的IP地址"><a href="#二、拿到博客的IP地址" class="headerlink" title="二、拿到博客的IP地址"></a>二、拿到博客的IP地址</h2><p>打开命令行工具，ping一下github给到的博客地址，拿到一个ip地址，如<code>ping fredwei.github.io</code></p>
+<p><img src="/images/20170512113238.png" alt=""></p>
+<h2 id="三、将你的域名解析到这个IP地址"><a href="#三、将你的域名解析到这个IP地址" class="headerlink" title="三、将你的域名解析到这个IP地址"></a>三、将你的域名解析到这个IP地址</h2><p>如果是域名解析的记录类型是<code>A</code>，那么就指向IP</p>
+<p><img src="/images/20170512113631.png" alt=""></p>
+<p>如果是<code>CNAME</code>，那么就指向你的博客域名（如fredwei.github.io），相当于重定向，这里不做演示。</p>
+<h2 id="四、添加CNAME文件"><a href="#四、添加CNAME文件" class="headerlink" title="四、添加CNAME文件"></a>四、添加CNAME文件</h2><p>一般来讲，域名解析到指定的IP，就可以通过域名访问该网站了。然而在github上还需要做一步操作，就是添加<code>CNAME</code>文件（无后缀名）。</p>
+<p><img src="/images/20170512114045.png" alt=""></p>
+<p>文件的内容很简单，就是你的域名</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">www.fredwei.com</div></pre></td></tr></table></figure>
+<h2 id="五、完成"><a href="#五、完成" class="headerlink" title="五、完成"></a>五、完成</h2><p>最后一步当然是上传到github上了，使用hexo的一个命令<code>hexo d</code>，上传成功后，即可通过域名访问到你的博客了。</p>
+<p>如果没有用<code>hexo</code>，那就自行上传吧。</p>
+<p><img src="/images/20170512115239.png" alt=""></p>
+<p>收工~</p>
 
       
 
@@ -206,24 +225,21 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hexo</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">github</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">github pasges</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">cname</a>
         		</li>
       		
 		</ul>
 	</div>
 
       
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/填坑/" class="article-tag-list-link color3">填坑</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
 
       
 
@@ -273,7 +289,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://fredwei.com/2017/03/23/使用hexo遇到的一个坑/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://fredwei.com/2017/05/12/添加自定义域名/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -287,18 +303,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2017/03/28/使用webpack构建时给window绑定事件的坑/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          使用webpack构建时给window绑定事件的坑
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/03/22/express路由/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Express路由</div>
+    <a href="/2017/04/26/vuejs基础入门/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">vuejs基础入门</div>
       <i class="icon-circle-right"></i>
     </a>
   
