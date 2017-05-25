@@ -6,17 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://fredwei.com">
-  <title>Category: 分享 | Fred&#39;s Blog</title>
+  <title>Web Worker | Fred&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="欢迎访问我的博客">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Fred's Blog">
-<meta property="og:url" content="http://fredwei.com/categories/分享/index.html">
+  <meta name="description" content="总所周知，javascript是单线程的，当一个函数执行的时候，JS引擎会锁住DOM树，其他事件的响应代码只能在队列中等待，并且此时页面卡死。如果某些脚本比较复杂、耗时，那么将会阻塞javascript继续执行，甚至导致浏览器失去响应。那么要实现javascript的多线程，ajax异步请求可以开辟一个新的线程来处理请求的业务，并不是真正意义上的多线程。在HTML5中，引入了Web Worker这">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Web Worker">
+<meta property="og:url" content="http://fredwei.com/2017/05/25/workers/index.html">
 <meta property="og:site_name" content="Fred's Blog">
-<meta property="og:description" content="欢迎访问我的博客">
+<meta property="og:description" content="总所周知，javascript是单线程的，当一个函数执行的时候，JS引擎会锁住DOM树，其他事件的响应代码只能在队列中等待，并且此时页面卡死。如果某些脚本比较复杂、耗时，那么将会阻塞javascript继续执行，甚至导致浏览器失去响应。那么要实现javascript的多线程，ajax异步请求可以开辟一个新的线程来处理请求的业务，并不是真正意义上的多线程。在HTML5中，引入了Web Worker这">
+<meta property="og:updated_time" content="2017-05-25T05:14:11.247Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Fred's Blog">
-<meta name="twitter:description" content="欢迎访问我的博客">
+<meta name="twitter:title" content="Web Worker">
+<meta name="twitter:description" content="总所周知，javascript是单线程的，当一个函数执行的时候，JS引擎会锁住DOM树，其他事件的响应代码只能在队列中等待，并且此时页面卡死。如果某些脚本比较复杂、耗时，那么将会阻塞javascript继续执行，甚至导致浏览器失去响应。那么要实现javascript的多线程，ajax异步请求可以开辟一个新的线程来处理请求的业务，并不是真正意义上的多线程。在HTML5中，引入了Web Worker这">
   
   
     <link rel="icon" href="/images/avatar.jpg">
@@ -142,36 +143,120 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-workers" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      Web Worker
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/25/workers/" class="archive-article-date">
+
+        
+        <a href="/2017/05/25/workers/" class="archive-article-date">
   	<time datetime="2017-05-25T04:26:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-25</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/25/workers/">Web Worker</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>总所周知，javascript是单线程的，当一个函数执行的时候，JS引擎会锁住DOM树，其他事件的响应代码只能在队列中等待，并且此时页面卡死。<br>如果某些脚本比较复杂、耗时，那么将会阻塞javascript继续执行，甚至导致浏览器失去响应。<br>那么要实现javascript的多线程，ajax异步请求可以开辟一个新的线程来处理请求的业务，并不是真正意义上的多线程。<br>在HTML5中，引入了Web Worker这个概念，它能够在另外一个线程中执行计算密集的JS代码而不引起页面卡死，这是真正的多线程。</p>
+<a id="more"></a>
+<h2 id="一、setTimeout和setInterval"><a href="#一、setTimeout和setInterval" class="headerlink" title="一、setTimeout和setInterval"></a>一、setTimeout和setInterval</h2><p>使用定时器看似是可以多个事件同时处理，其实并非是多线程的。</p>
+<p>定时器只是一个定时的事件触发器，它们在合适的时间把一些JS代码塞到JS引擎的队列中，然后JS会逐个处理队列中的事件。</p>
+<h2 id="二、Web-Worker-简介"><a href="#二、Web-Worker-简介" class="headerlink" title="二、Web Worker 简介"></a>二、Web Worker 简介</h2><p>在HTML5中，引入了Web Worker这个概念。它能够在另外一个线程中执行计算密集的JS代码而不引起页面卡死，这是真正的多线程。然而为了保证线程安全，Worker中的代码是不能访问DOM的。具体解释请看<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Worker/Worker" target="_blank" rel="external">火狐开发文档-Worker</a></p>
+<p>官方的解释：<br>Web Workers是一种机制，通过它可以使一个脚本操作在与Web应用程序的主执行线程分离的后台线程中运行。这样做的优点是可以在单独的线程中执行繁琐的处理，让主（通常是UI）线程运行而不被阻塞/减慢。</p>
+<p>特别提醒，运行worker多线程，需要在服务器环境下，所以在跑一下demo时，请自行搭建运行环境。</p>
+<h2 id="三、Worker基本用法"><a href="#三、Worker基本用法" class="headerlink" title="三、Worker基本用法"></a>三、Worker基本用法</h2><p>首先，先了解下worker常用的两个方法<code>onmessage</code>和<code>postMessage</code>，<code>onmessage</code>是监听worker文件返回数据的回调方法，<code>postMessage</code>是worker返回页面的数据的方法。示例如下：</p>
+<p>页面文件：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"btn1"</span>&gt;</span>有worker<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"btn2"</span>&gt;</span>无worker<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"time"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"output"</span> <span class="attr">style</span>=<span class="string">"height: 400px; border: 1px solid #ccc; overflow-y: auto; word-break: break-all;"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line"><span class="keyword">if</span>(<span class="keyword">typeof</span>(Worker) !== <span class="string">"undefined"</span>)&#123;</div><div class="line">  <span class="comment">// var _worker = new Worker('demo2.js');</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">workerInit</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="keyword">if</span>(<span class="keyword">typeof</span>(Worker) !== <span class="string">"undefined"</span>)&#123;</div><div class="line">    <span class="keyword">var</span> _html = [];</div><div class="line">    <span class="keyword">var</span> _worker = <span class="keyword">new</span> Worker(<span class="string">'demo2.js'</span>);</div><div class="line"></div><div class="line">    _worker.onmessage = <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</div><div class="line">      <span class="keyword">if</span>(event.data.n)&#123;</div><div class="line">        _html.push(event.data.n);</div><div class="line">      &#125;</div><div class="line"></div><div class="line">      <span class="keyword">if</span>(event.data.t)&#123;</div><div class="line">        <span class="built_in">document</span>.getElementById(<span class="string">'output'</span>).innerHTML = _html.join(<span class="string">','</span>);</div><div class="line">        <span class="built_in">document</span>.getElementById(<span class="string">'time'</span>).innerHTML = <span class="string">'耗时：'</span> + (<span class="keyword">new</span> <span class="built_in">Date</span>().getTime() - event.data.t + <span class="string">'毫秒'</span>);</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  &#125;<span class="keyword">else</span>&#123;</div><div class="line">    alert(<span class="string">'不支持 Worker'</span>);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> btn1 = <span class="built_in">document</span>.getElementById(<span class="string">'btn1'</span>);</div><div class="line"><span class="keyword">var</span> btn2 = <span class="built_in">document</span>.getElementById(<span class="string">'btn2'</span>);</div><div class="line"></div><div class="line">btn1.onclick = workerInit;</div><div class="line">btn2.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="keyword">var</span> n = <span class="number">1</span>;</div><div class="line">  <span class="keyword">var</span> _t = <span class="keyword">new</span> <span class="built_in">Date</span>().getTime();</div><div class="line">  <span class="keyword">var</span> _h = [];</div><div class="line"></div><div class="line">  abc:<span class="keyword">while</span>(n &lt; <span class="number">99999</span>)&#123;</div><div class="line">    ++n;</div><div class="line"></div><div class="line">    <span class="comment">// 查找质数（在大于1的自然数中，除了1和该整数自身外，无法被其他自然数整除的数）</span></div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">2</span>; i &lt;= <span class="built_in">Math</span>.sqrt(n); i++) &#123;</div><div class="line">      <span class="keyword">if</span>(n%i == <span class="number">0</span>)&#123;</div><div class="line">        <span class="keyword">continue</span> abc;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    _h.push(n);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="built_in">document</span>.getElementById(<span class="string">'output'</span>).innerHTML = _h.join(<span class="string">','</span>);</div><div class="line">  <span class="built_in">document</span>.getElementById(<span class="string">'time'</span>).innerHTML = <span class="string">'耗时：'</span> + (<span class="keyword">new</span> <span class="built_in">Date</span>().getTime() - _t + <span class="string">'毫秒'</span>);</div><div class="line">&#125;;</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>tips:发现个奇怪的问题，如上代码第<code>9</code>行，在外部定义了worker之后，在<code>workerInit</code>方法中无法正常调用，而且并没有报错。</p>
+<p>worker文件<code>demo2.js</code>：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> n = <span class="number">1</span>;</div><div class="line"><span class="keyword">var</span> _t = <span class="keyword">new</span> <span class="built_in">Date</span>().getTime();</div><div class="line"></div><div class="line">search:<span class="keyword">while</span>(n &lt; <span class="number">99999</span>)&#123;</div><div class="line">  ++n;</div><div class="line"></div><div class="line">  <span class="comment">// 查找质数（在大于1的自然数中，除了1和该整数自身外，无法被其他自然数整除的数）</span></div><div class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">2</span>; i &lt;= <span class="built_in">Math</span>.sqrt(n); i++) &#123;</div><div class="line">    <span class="keyword">if</span>(n%i == <span class="number">0</span>)&#123;</div><div class="line">      <span class="keyword">continue</span> search;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="comment">// console.log(new Date().getTime() - _t, n);</span></div><div class="line">  <span class="comment">// document.getElementById('output').innerHTML += (n + '，');</span></div><div class="line">  postMessage(&#123;</div><div class="line">    <span class="attr">n</span>: n</div><div class="line">  &#125;);</div><div class="line">&#125;</div><div class="line"></div><div class="line">postMessage(&#123;</div><div class="line">  <span class="attr">t</span>: _t</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>以上代码中，在1-99999中查找质数，每找到一个，使用<code>postMessage</code>返回一次，循环结束后，返回循环开始的时间。</p>
+<p>应用worker与原生js处理相同业务所需的时间是多少呢？<br>应用worker五次运行分别耗时（平均204.8ms）：204ms，216ms，197ms，208ms，199ms<br>原生js五次运行分别耗时（平均32.4ms）：40ms，38ms，24ms，32ms，28ms</p>
+<p>以执行速度来看，查找1-99999中的质数，原生js比worker快大约6倍</p>
+<p>当然这并不意味这worker是个无用的功能，在某些应用场景还是很适用的。</p>
+<p>最后worker除了<code>onmessage</code>和<code>postMessage</code>这两个方法，还有其他的约束及api，具体请自行查看文档<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Worker/Worker" target="_blank" rel="external">火狐开发文档-Worker</a></p>
+<h2 id="四、兼容问题"><a href="#四、兼容问题" class="headerlink" title="四、兼容问题"></a>四、兼容问题</h2><p>无法避免的兼容问题，除了worker对象的兼容，还有worker api的兼容也各不同，以下是worker对象的兼容。</p>
+<p>桌面端：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Feature</th>
+<th style="text-align:center">Chrome</th>
+<th style="text-align:center">Firefox (Gecko)</th>
+<th style="text-align:center">Internet Explorer</th>
+<th style="text-align:center">Opera</th>
+<th style="text-align:center">Safari (WebKit)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Basic support</td>
+<td style="text-align:center">4</td>
+<td style="text-align:center">3.5</td>
+<td style="text-align:center">10.0</td>
+<td style="text-align:center">10.6</td>
+<td style="text-align:center">4</td>
+</tr>
+</tbody>
+</table>
+<p>移动端：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Feature</th>
+<th style="text-align:center">Android</th>
+<th style="text-align:center">Firefox Mobile (Gecko)</th>
+<th style="text-align:center">Firefox OS (Gecko)</th>
+<th style="text-align:center">IE Phone</th>
+<th style="text-align:center">Opera Mobile</th>
+<th style="text-align:center">Safari Mobile</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Basic support</td>
+<td style="text-align:center">4.4</td>
+<td style="text-align:center">3.5</td>
+<td style="text-align:center">1.0.1</td>
+<td style="text-align:center">10.0</td>
+<td style="text-align:center">11.5</td>
+<td style="text-align:center">5.1</td>
+</tr>
+</tbody>
+</table>
 
-        <div class="article-info info-on-right">
-          
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>thanks<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -191,7 +276,7 @@
 		</ul>
 	</div>
 
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -204,131 +289,86 @@
 	</div>
 
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://fredwei.com/2017/05/25/workers/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/04/12/workers/" class="archive-article-date">
-  	<time datetime="2017-04-12T11:26:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-12</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/04/12/workers/">web workers</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">html5</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">workers</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">web api</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/分享/" class="article-tag-list-link color3">分享</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/22/express路由/" class="archive-article-date">
-  	<time datetime="2017-03-22T08:11:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/22/express路由/">Express路由</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">nodejs</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">express</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">router</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/分享/" class="article-tag-list-link color3">分享</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2017/05/12/添加自定义域名/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">在 github pages 添加自定义域名</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+  
+    <div class="duoshuo"></div>
   
 
-    
+
 
 
           </div>
@@ -351,10 +391,10 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
-		isCategory: true,
+		isCategory: false,
 		open_in_new: false,
 		root: "/",
 		innerArchive: true,
